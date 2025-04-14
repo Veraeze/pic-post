@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 const port = 4000;
 
-// app.options('*', cors());
 app.use(cors());
 app.use(express.json());
 app.use('/picpost', postRoutes);
@@ -30,10 +29,6 @@ const connectDB = async () => {
   
 connectDB();
   
-
-// app.get('/hello', (req, res) => {
-//   res.json({ message: 'hello, vera'});
-// })
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)

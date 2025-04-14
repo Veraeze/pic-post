@@ -33,4 +33,14 @@ const addPost = async (req, res) => {
   }
 };
 
-export default addPost;
+const getPost = async (req, res) => {
+    try {
+        const posts = await postModel.find().sort({ createdAt: -1 });
+        res.json({success: true, data: posts})
+    } catch (error) {
+        console.error('fetch error:', error);
+        res.status(500).json({success: false, message: error.message});
+    }
+}
+
+export {addPost, getPost};
