@@ -20,6 +20,7 @@ const addPost = async (req, res) => {
 
     // Save to MongoDB
     const postData = {
+      caption: req.body.caption,
       imageUrl: result.secure_url,
     };
 
