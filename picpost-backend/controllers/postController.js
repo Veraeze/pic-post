@@ -44,4 +44,13 @@ const getPost = async (req, res) => {
     }
 }
 
-export {addPost, getPost};
+const removePost = async (req, res) => {
+    try {
+        await postModel.findByIdAndDelete(req.body.id)
+        res.json({success:true, message: "post deleted"})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:error.message})
+    }
+}
+export {addPost, getPost, removePost};
