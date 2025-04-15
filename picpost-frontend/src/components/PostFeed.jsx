@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaTrash } from 'react-icons/fa';
 
 const PostFeed = ({posts, setPosts}) => {
@@ -29,9 +30,11 @@ const PostFeed = ({posts, setPosts}) => {
             const result = await res.json();
             if(result.success){
                 setPosts((prev) => prev.filter((post) => post._id !== postId));
+                toast.success('post deleted!')
             }
         } catch (error) {
             console.error('error deleting post:', error);
+            
         }
     }
 

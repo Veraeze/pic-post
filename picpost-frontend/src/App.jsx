@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import PostFeed from './components/PostFeed';
+import toast, {Toaster} from 'react-hot-toast';
 
 
 function App() {
@@ -44,9 +45,9 @@ function App() {
             const res = await fetch('http://localhost:4000/picpost/posts');
             const data = await res.json();
             setPosts(data.data);
-            alert('upload successful!');
+            toast.success('upload successful!');
         } else{
-            alert('upload failed!');
+            toast.error('upload failed!');
         }
 
     } catch (error) {
@@ -85,6 +86,7 @@ function App() {
           </button>
         </form>
         <PostFeed posts={posts} setPosts={setPosts}/>
+        <Toaster position='top-right'/>
       </div>
     );
 };
