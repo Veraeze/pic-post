@@ -67,8 +67,7 @@ function App() {
             type='file'
             accept='image/*'
             onChange={(e) => setImage(e.target.files[0])}
-            className='w-full border rounded px-3 py-2'
-            required
+            className="w-full border border-pink-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"            required
           />
           <textarea
             placeholder='Write a caption...'
@@ -80,8 +79,7 @@ function App() {
           ></textarea>
           <button
             type='submit'
-            className='w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition'
-          >
+            className="w-full bg-pink-500 text-white font-semibold py-2 rounded hover:bg-pink-600 transition"          >
             Upload
           </button>
         </form>
