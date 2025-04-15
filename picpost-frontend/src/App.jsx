@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PostFeed from './components/PostFeed';
 import toast, {Toaster} from 'react-hot-toast';
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -57,12 +58,14 @@ function App() {
 }
 
   return (
+    
       <div className='min-h-screen bg-gray-100 p-6 flex flex-col items-center'>
+        <Navbar/>
         <form
           onSubmit={handleSubmit}
           className='bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-4 mb-10'
         >
-          <h1 className='text-2xl font-bold mb-4 text-center'>📸 PicPost</h1>
+          {/* <h1 className='text-2xl font-bold mb-4 text-center'>📸 PicPost</h1> */}
           <input
             type='file'
             accept='image/*'
