@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import PostFeed from './components/PostFeed';
 import toast, {Toaster} from 'react-hot-toast';
 import Navbar from './components/Navbar';
-
+import Register from './pages/Register';
+import Login from './pages/Login';
+import { Route, Router, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -58,37 +60,48 @@ function App() {
 }
 
   return (
-    
+    <Router>
       <div className='min-h-screen bg-gray-100 p-6 flex flex-col items-center'>
         <Navbar/>
-        <form
-          onSubmit={handleSubmit}
-          className='bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-4 mb-10'
-        >
-          {/* <h1 className='text-2xl font-bold mb-4 text-center'>📸 PicPost</h1> */}
-          <input
-            type='file'
-            accept='image/*'
-            onChange={(e) => setImage(e.target.files[0])}
-            className="w-full border border-pink-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"            required
-          />
-          <textarea
-            placeholder='Write a caption...'
-            value={caption}
-            onChange={(e) => setCaption(e.target.value)}
-            className='w-full border rounded px-3 py-2'
-            rows='3'
-            required
-          ></textarea>
-          <button
-            type='submit'
-            className="w-full bg-pink-500 text-white font-semibold py-2 rounded hover:bg-pink-600 transition"          >
-            Upload
-          </button>
-        </form>
-        <PostFeed posts={posts} setPosts={setPosts}/>
+        <Routes>
+          <Route
+          path='/'
+          element={
+            <>
+              <form
+                onSubmit={handleSubmit}
+                className='bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-4 mb-10'
+              >   
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setImage(e.target.files[0])}
+                  className="w-full border border-pink-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"            required
+                />
+                <textarea
+                  placeholder='Write a caption...'
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
+                  className='w-full border rounded px-3 py-2'
+                  rows='3'
+                  required>
+                </textarea>
+                <button
+                  type='submit'
+                  className="w-full bg-pink-500 text-white font-semibold py-2 rounded hover:bg-pink-600 transition"          >
+                  Upload
+                </button>
+              </form>
+              <PostFeed posts={posts} setPosts={setPosts}/>
+            </>
+          }
+        />
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        </Routes>
         <Toaster position='top-right'/>
       </div>
+      </Router>
     );
 };
 
