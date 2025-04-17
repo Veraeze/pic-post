@@ -9,8 +9,19 @@ const Navbar = () => {
         <img src={logo} alt="PicPost" className="h-6 w-auto object-contain" />
         <span className="text-pink-500 font-bold text-xl">OMAV</span>
       </div>
-      <button className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
+      <button
+      className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
         Profile
+      </button>
+      <button
+      onClick={() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
+      }}
+      className='bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition'
+      >
+      Logout
       </button>
     </div>
   </nav>

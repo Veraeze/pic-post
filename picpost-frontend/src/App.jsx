@@ -4,7 +4,12 @@ import toast, {Toaster} from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import { Route, Router, Routes } from 'react-router-dom';
+import { Navigate, Route, Router, Routes } from 'react-router-dom';
+
+const PrivateRoute = ({children}) => {
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to='/login'/>;
+};
 
 function App() {
 
@@ -67,6 +72,7 @@ function App() {
           <Route
           path='/'
           element={
+            <PrivateRoute>
             <>
               <form
                 onSubmit={handleSubmit}
@@ -94,6 +100,7 @@ function App() {
               </form>
               <PostFeed posts={posts} setPosts={setPosts}/>
             </>
+            </PrivateRoute>
           }
         />
         <Route path='/login' element={<Login/>}/>
