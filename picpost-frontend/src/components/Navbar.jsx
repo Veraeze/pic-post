@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.jpg';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -9,10 +10,11 @@ const Navbar = () => {
         <img src={logo} alt="PicPost" className="h-6 w-auto object-contain" />
         <span className="text-pink-500 font-bold text-xl">OMAV</span>
       </div>
-      <button
+      <button><Link
+      to='/profile'
       className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">
         Profile
-      </button>
+      </Link></button>
       <button
       onClick={() => {
       localStorage.removeItem('token');
