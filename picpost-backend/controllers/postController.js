@@ -22,6 +22,7 @@ const addPost = async (req, res) => {
     const postData = {
       caption: req.body.caption,
       imageUrl: result.secure_url,
+      userId: req.user.id,
     };
 
     const postImage = new postModel(postData);
