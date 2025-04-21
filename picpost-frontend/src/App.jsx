@@ -43,6 +43,7 @@ function App() {
     try {
         const response = await fetch('http://localhost:4000/picpost/upload', {
             method: 'POST',
+            headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             body: formData,
         });
 
