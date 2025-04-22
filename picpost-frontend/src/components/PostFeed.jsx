@@ -4,19 +4,6 @@ import { FaTrash } from 'react-icons/fa';
 
 const PostFeed = ({posts, setPosts}) => {
 
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         try {
-    //             const res = await fetch('http://localhost:4000/picpost/posts');
-    //             const data = await res.json();
-    //             setPosts(data.data);
-    //         } catch (error) {
-    //             console.error('error fetching posts:', error)
-    //         }
-    //     };
-    //     fetchPosts();
-    // }, []);
-
     const handleDelete = async (postId) => {
         try {
             const res = await fetch('http://localhost:4000/picpost/delete', {
@@ -40,6 +27,7 @@ const PostFeed = ({posts, setPosts}) => {
 
     return(
         <div className="p-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="text-pink-700 text-3xl">Tailwind is working!</div>
             {posts.map((post) => (
                 <div key={post._id} className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition">
                     <img src={post.imageUrl} alt="uploaded post" className="w-full h-40 object-cover rounded-t-md"/>                    
