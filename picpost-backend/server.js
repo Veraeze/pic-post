@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import postRoutes from './routes/postRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/picpost', postRoutes);
 app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
 
 const connectDB = async () => {
     const mongoURI = process.env.MONGO_URI;
